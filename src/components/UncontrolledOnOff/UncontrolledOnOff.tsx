@@ -4,7 +4,7 @@ type PropsType = {
   onChange: (on: boolean) => void
 }
 
-const UncontrolledOnOff: React.FC<PropsType> = (props) => {
+export const UncontrolledOnOff: React.FC<PropsType> = (props) => {
   let [on, setOn] = useState(false)
 
   const onStyle = {
@@ -52,4 +52,3 @@ const UncontrolledOnOff: React.FC<PropsType> = (props) => {
   );
 };
 
-export default UncontrolledOnOff;

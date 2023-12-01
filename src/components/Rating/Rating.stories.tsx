@@ -3,7 +3,6 @@ import {action} from '@storybook/addon-actions';
 import {useState} from 'react';
 
 export default {
-  title: 'Rating stories',
   component: Rating
 }
 
