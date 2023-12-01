@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
-import {RatingValueType} from './components/Rating/Rating';
-import Accordion from './components/Accordion/Accordion';
+import {Rating, RatingValueType} from './components/Rating/Rating';
+import {Accordion} from './components/Accordion/Accordion';
 import UncontrolledAccordion from './components/UncontrolledAccordion/UncontrolledAccordion';
-import OnOff from './components/OnOff/OnOff';
+import {OnOff} from './components/OnOff/OnOff';
 import UncontrolledOnOff from './components/UncontrolledOnOff/UncontrolledOnOff';
 
 // function declaration
@@ -30,8 +30,8 @@ function App() {
                  }}/>
       <UncontrolledAccordion titleValue={'UncontrolledAccordion'}/>
 
-      {/*<Rating value={ratingValue}*/}
-      {/*        onClick={setRatingValue}/>*/}
+      <Rating value={ratingValue}
+              onClick={setRatingValue}/>
       {/*<UncontrolledRating/>*/}
 
       {/*<PageTitle title={"This is APP component"}/>*/}
