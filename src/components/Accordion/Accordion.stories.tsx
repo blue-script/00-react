@@ -24,16 +24,23 @@ export default {
 
 
 const onChangeHandler = action('onChange')
+const onClickHandler = action('click on item')
 export const CollapsedAccordion = () => {
   return <Accordion titleValue={'Collapsed Accordion'}
                     collapsed={true}
-                    onChange={onChangeHandler}/>
+                    onChange={onChangeHandler}
+                    items={[]}
+                    onClick={onClickHandler}
+  />
 }
 
 export const OpenedAccordion = () => {
   return <Accordion titleValue={'Opened Accordion'}
                     collapsed={false}
-                    onChange={onChangeHandler}/>
+                    onChange={onChangeHandler}
+                    items={[{title: 'Dimych', value: '1'}, {title: 'Anna', value: '2'}, {title: 'Valera', value: '3'}]}
+                    onClick={onClickHandler}
+  />
 }
 
 export const AccordionDemo = () => {
@@ -42,5 +49,8 @@ export const AccordionDemo = () => {
                      collapsed={collapsed}
                      onChange={() => {
                        setCollapsed(!collapsed)
-                     }}/>
+                     }}
+                     items={[{title: 'Dimych', value: '1'}, {title: 'Anna', value: '2'}, {title: 'Valera', value: '3'}]}
+                     onClick={value => alert(`user with ID ${value} should be happy`)}
+  />
 }
