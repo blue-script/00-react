@@ -6,6 +6,7 @@ import {UncontrolledAccordion} from './components/UncontrolledAccordion/Uncontro
 import {OnOff} from './components/OnOff/OnOff';
 import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
 import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
+import {Select} from './components/Select/Select';
 
 // function declaration
 function App() {
@@ -19,20 +20,23 @@ function App() {
   // обязана вернуть JSX
   return (
     <div className="App">
-      Controlled
-      <OnOff on={switchOn} onChange={setSwitchOn}/>
-      Uncontrolled
-      <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
+      {/*<Select value={collapsed}*/}
+      {/*        items={[{title: 'al', value: '1'},{title: '2', value: '1'},{title: '3', value: '1'},{title: '4', value: '1'}]}*/}
+      {/*        onChange={setCollapsed}/>*/}
+      {/*Controlled*/}
+      {/*<OnOff on={switchOn} onChange={setSwitchOn}/>*/}
+      {/*Uncontrolled*/}
+      {/*<UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}*/}
 
-      <Accordion titleValue={'Accordion'}
-                 collapsed={accordionCollapsed}
-                 onChange={() => {
-                   setAccordionCollapsed(!accordionCollapsed)
-                 }}/>
-      <UncontrolledAccordion titleValue={'UncontrolledAccordion'}/>
+      {/*<Accordion titleValue={'Accordion'}*/}
+      {/*           collapsed={accordionCollapsed}*/}
+      {/*           onChange={() => {*/}
+      {/*             setAccordionCollapsed(!accordionCollapsed)*/}
+      {/*           }}/>*/}
+      {/*<UncontrolledAccordion titleValue={'UncontrolledAccordion'}/>*/}
 
-      <Rating value={ratingValue}
-              onClick={setRatingValue}/>
+      {/*<Rating value={ratingValue}*/}
+      {/*        onClick={setRatingValue}/>*/}
       {/*<UncontrolledRating/>*/}
 
       {/*<PageTitle title={"This is APP component"}/>*/}
