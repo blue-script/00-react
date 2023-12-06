@@ -33,7 +33,7 @@ function App() {
 
       <Rating value={ratingValue}
               onClick={setRatingValue}/>
-      <UncontrolledRating/>
+      {/*<UncontrolledRating/>*/}
 
       {/*<PageTitle title={"This is APP component"}/>*/}
     </div>
