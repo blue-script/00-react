@@ -1,24 +1,36 @@
 import {Select} from './Select';
 import React, {useState} from 'react';
+import { withConsole } from '@storybook/addon-console';
 
 export default {
-  title: 'SelectState',
+  title: 'Select',
   component: Select,
 }
 
-export const SelectDemo = () => {
-  const onChangeHandler = (value: any) => {
-  }
-  const [collapsed, setCollapsed] = useState('none')
-  const items = [
-    {title: 'al', value: '1'},
-    {title: '2', value: '1'},
-    {title: '3', value: '1'},
-    {title: '4', value: '1'}
-  ]
+export const WithValue = () => {
+  const [value, setValue] = useState('2')
   return <>
-    <Select value={collapsed}
-            items={items}
-            onChange={setCollapsed}/>
+    <Select
+      value={value}
+      items={[
+        {title: 'Minsk', value: '1'},
+        {title: 'Moscow', value: '2'},
+        {title: 'Kiev', value: '3'},
+      ]}
+      onChange={setValue}/>
+  </>
+}
+
+export const WithoutValue = () => {
+  const [value, setValue] = useState(null)
+  return <>
+    <Select
+      value={value}
+      items={[
+        {title: 'Minsk', value: '1'},
+        {title: 'Moscow', value: '2'},
+        {title: 'Kiev', value: '3'},
+      ]}
+      onChange={setValue}/>
   </>
 }

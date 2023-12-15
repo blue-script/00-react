@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
+import React, {KeyboardEvent, useEffect, useState} from 'react';
+import style from './Select.module.css'
 
 type ItemPropsType = {
   title: string
@@ -7,68 +7,65 @@ type ItemPropsType = {
 }
 
 type SelectPropsType = {
-  value: any
+  value?: any
   onChange: (value: any) => void
   items: ItemPropsType[]
 }
 export const Select: React.FC<SelectPropsType> = (props) => {
-  const [collapsed, setCollapsed] = useState(true)
-  const onClickHandler = () => {
-    setCollapsed(!collapsed)
+  const [active, setActive] = useState(false)
+  const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
+  let selectedItem = props.items.find(i => i.value === props.value)
+  let hoveredItem = props.items.find(i => i.value === hoveredElementValue)
+  useEffect(() => {
+    setHoveredElementValue(props.value)
+  }, [props.value]);
+
+  const toggleItem = () => setActive(!active)
+  const onItemClick = (value: any) => {
+    props.onChange(value)
+    toggleItem()
   }
-  return <SelectStyled onClick={onClickHandler}>
-    <div>{props.value}</div>
-    {collapsed && <ListStyled>
-      {props.items
-        .map(item => {
-          const onClickHandler = () => props.onChange(item.title)
-          return <li key={item.value} onClick={onClickHandler}>{item.title}</li>
-        })}
-    </ListStyled>}
-  </SelectStyled>
+  const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      for (let i = 0; i < props.items.length; i++) {
+        if (props.items[i].value === hoveredElementValue) {
+          const pretendentElement = e.key === 'ArrowDown'
+            ? props.items[i + 1]
+            : props.items[i - 1]
+          if (pretendentElement) {
+            props.onChange(pretendentElement.value)
+            return
+          }
+        }
+      }
+      if (!selectedItem) {
+        props.onChange(props.items[0].value)
+      }
+    }
+    if (e.key === 'Escape' || e.key === 'Enter') setActive(false)
+  }
+  console.log('press')
+  return <>
+    <div className={style.select} onKeyUp={onKeyUp} tabIndex={0}>
+      <span className={style.main}
+            onClick={toggleItem}>{selectedItem?.title}</span>
+      {
+        active &&
+          <div className={style.items}>
+            {props.items
+              .map(i => <div
+                  onMouseEnter={() => setHoveredElementValue(i.value)}
+                  className={style.item + ' ' + (hoveredItem === i ? style.selected : '')}
+                  key={i.value}
+                  onClick={() => onItemClick(i.value)}
+                >{i.title}
+                </div>
+              )
+            }
+          </div>
+      }
+    </div>
+  </>
 }
 
 
-const SelectStyled = styled.div`
-  width: 100px;
-  height: 50px;
-  background-color: #1ea7fd;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border: 1px solid black;
-  border-radius: 5px 5px 0 0;
-  &::after {
-    position: absolute;
-    display: inline-block;
-    content: "▼";
-    color: antiquewhite;
-    right: 5px;
-  }
-  cursor: pointer;
-`
-
-const ListStyled = styled.ul`
-  position: absolute;
-  margin: 0 auto;
-  padding: 5px 0;
-  width: 100px;
-  list-style: none;
-  top: 50px;
-  & li {
-    padding-left: 5px;
-    border-bottom: 1px ridge black;
-  }
-  & li:hover {
-    background-color: bisque;
-    cursor: pointer;
-  }
-
-  background-color: lightgray;
-  color: red;
-  border: 1px solid black;
-  border-top: none;
-  border-radius: 0 0 5px 5px;
-`

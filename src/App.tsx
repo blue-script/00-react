@@ -16,12 +16,12 @@ function App() {
   const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
   const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
   const [switchOn, setSwitchOn] = useState<boolean>(false)
-
+  console.log('hi')
   // обязана вернуть JSX
   return (
     <div className="App">
       {/*<Select value={collapsed}*/}
-      {/*        items={[{title: 'al', value: '1'},{title: '2', value: '1'},{title: '3', value: '1'},{title: '4', value: '1'}]}*/}
+      {/*        items={[{title: 'al', value: '1'},{title: '2', value: '2'},{title: '3', value: '3'},{title: '4', value: '4'}]}*/}
       {/*        onChange={setCollapsed}/>*/}
       {/*Controlled*/}
       {/*<OnOff on={switchOn} onChange={setSwitchOn}/>*/}
