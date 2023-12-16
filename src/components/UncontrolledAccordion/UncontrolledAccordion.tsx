@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react';
 import {reducer, TOGGLE_COLLAPSED} from './Reducer';
+import {OnOff} from '../OnOff/OnOff';
 
 type AccordionPropsType = {
   titleValue: string
@@ -13,10 +14,11 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
 
   return <div>
     {/*<AccordionTitle title={props.titleValue} onClick={()=>{setCollapsed(!collapsed)}}/>*/}
-    <AccordionTitle title={props.titleValue} onClick={()=>{dispatch({type: TOGGLE_COLLAPSED})}}/>
-    {!state.collapsed && <AccordionBody/>}
+    <AccordionTitleWhithMemo title={props.titleValue} onClick={()=>{dispatch({type: TOGGLE_COLLAPSED})}}/>
+    {!state.collapsed && <AccordionBodyWhithMemo/>}
   </div>
 }
+export const UncontrolledAccordionWhithMemo= React.memo(UncontrolledAccordion)
 
 type AccordionTitlePropsType = {
   title: string
@@ -29,6 +31,7 @@ function AccordionTitle(props: AccordionTitlePropsType) {
     props.onClick()
   }}>-- {props.title} --</h3>
 }
+export const AccordionTitleWhithMemo= React.memo(AccordionTitle)
 
 function AccordionBody() {
   console.log('AccordionBody rendering')
@@ -38,3 +41,4 @@ function AccordionBody() {
     <li>3</li>
   </ul>
 }
+export const AccordionBodyWhithMemo= React.memo(AccordionBody)

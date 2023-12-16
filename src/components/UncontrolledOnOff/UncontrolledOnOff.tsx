@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {OnOff} from '../OnOff/OnOff';
 
 type PropsType = {
   onChange: (on: boolean) => void
@@ -52,4 +53,4 @@ export const UncontrolledOnOff: React.FC<PropsType> = (props) => {
     </div>
   );
 };
-
+export const UncontrolledOnOffWhithMemo= React.memo(UncontrolledOnOff)

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Accordion} from '../Accordion/Accordion';
 
 type PropsType = {
   on: boolean
@@ -47,3 +48,4 @@ export const OnOff: React.FC<PropsType> = (props) => {
     </div>
   );
 };
+export const OnOffWhithMemo= React.memo(OnOff)

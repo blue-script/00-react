@@ -1,4 +1,4 @@
-import {Select} from './Select';
+import {Select, SelectWhithMemo} from './Select';
 import React, {useState} from 'react';
 import { withConsole } from '@storybook/addon-console';
 
@@ -10,7 +10,7 @@ export default {
 export const WithValue = () => {
   const [value, setValue] = useState('2')
   return <>
-    <Select
+    <SelectWhithMemo
       value={value}
       items={[
         {title: 'Minsk', value: '1'},
@@ -24,7 +24,7 @@ export const WithValue = () => {
 export const WithoutValue = () => {
   const [value, setValue] = useState(null)
   return <>
-    <Select
+    <SelectWhithMemo
       value={value}
       items={[
         {title: 'Minsk', value: '1'},

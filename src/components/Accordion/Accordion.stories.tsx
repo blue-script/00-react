@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import {Accordion} from './Accordion';
+import {Accordion, AccordionWhithMemo} from './Accordion';
 import React, {useState} from 'react';
 
 // const meta: Meta<typeof Accordion> = {
@@ -26,7 +26,7 @@ export default {
 const onChangeHandler = action('onChange')
 const onClickHandler = action('click on item')
 export const CollapsedAccordion = () => {
-  return <Accordion titleValue={'Collapsed Accordion'}
+  return <AccordionWhithMemo titleValue={'Collapsed Accordion'}
                     collapsed={true}
                     onChange={onChangeHandler}
                     items={[]}
@@ -35,7 +35,7 @@ export const CollapsedAccordion = () => {
 }
 
 export const OpenedAccordion = () => {
-  return <Accordion titleValue={'Opened Accordion'}
+  return <AccordionWhithMemo titleValue={'Opened Accordion'}
                     collapsed={false}
                     onChange={onChangeHandler}
                     items={[{title: 'Dimych', value: '1'}, {title: 'Anna', value: '2'}, {title: 'Valera', value: '3'}]}
@@ -45,7 +45,7 @@ export const OpenedAccordion = () => {
 
 export const AccordionDemo = () => {
   const [collapsed, setCollapsed] = useState(false)
-  return  <Accordion titleValue={'Accordion'}
+  return  <AccordionWhithMemo titleValue={'Accordion'}
                      collapsed={collapsed}
                      onChange={() => {
                        setCollapsed(!collapsed)

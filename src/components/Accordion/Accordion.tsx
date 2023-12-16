@@ -17,12 +17,14 @@ export function Accordion(props: AccordionPropsType) {
   console.log('Accordion rendering')
 
   return <div>
-    <AccordionTitle
+    <AccordionTitleWhithMemo
       title={props.titleValue}
       onChange={props.onChange}/>
-    {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+    {!props.collapsed && <AccordionBodyTitleWhithMemo items={props.items} onClick={props.onClick}/>}
   </div>
 }
+
+export const AccordionWhithMemo= React.memo(Accordion)
 
 type AccordionTitlePropsType = {
   title: string
@@ -33,6 +35,7 @@ function AccordionTitle(props: AccordionTitlePropsType) {
   console.log('AccordionTitle rendering')
   return <h3 onClick={(event => props.onChange())}>{props.title}</h3>
 }
+export const AccordionTitleWhithMemo= React.memo(AccordionTitle)
 
 type AccordionBodyPropsType = {
   items: ItemType[]
@@ -54,3 +57,4 @@ function AccordionBody(props: AccordionBodyPropsType) {
     })}
   </ul>
 }
+export const AccordionBodyTitleWhithMemo= React.memo(AccordionBody)

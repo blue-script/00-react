@@ -1,5 +1,6 @@
 import React, {KeyboardEvent, useEffect, useReducer, useState} from 'react';
 import style from './Select.module.css'
+import {OnOff} from '../OnOff/OnOff';
 
 const reducer = (state: any, action: any) => {
   return state
@@ -73,5 +74,5 @@ export const Select: React.FC<SelectPropsType> = (props) => {
     </div>
   </>
 }
-
+export const SelectWhithMemo= React.memo(Select)
 
