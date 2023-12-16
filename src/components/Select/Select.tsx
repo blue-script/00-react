@@ -1,5 +1,9 @@
-import React, {KeyboardEvent, useEffect, useState} from 'react';
+import React, {KeyboardEvent, useEffect, useReducer, useState} from 'react';
 import style from './Select.module.css'
+
+const reducer = (state: any, action: any) => {
+  return state
+}
 
 type ItemPropsType = {
   title: string
@@ -14,6 +18,8 @@ type SelectPropsType = {
 export const Select: React.FC<SelectPropsType> = (props) => {
   const [active, setActive] = useState(false)
   const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
+  const [a,dispatch] = useReducer(reducer, false)
+
   let selectedItem = props.items.find(i => i.value === props.value)
   let hoveredItem = props.items.find(i => i.value === hoveredElementValue)
   useEffect(() => {

@@ -5,4 +5,4 @@ export default {
   component: UncontrolledAccordion,
 }
 
-export const SwitchMode = () => <UncontrolledAccordion titleValue={'UncontrolledAccordion'}/>
+export const SwitchMode = () => <UncontrolledAccordion titleValue={'Users'}/>
