@@ -1,6 +1,5 @@
 import {Select, SelectWhithMemo} from './Select';
 import React, {useState} from 'react';
-import { withConsole } from '@storybook/addon-console';
 
 export default {
   title: 'Select',

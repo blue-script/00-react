@@ -1,4 +1,5 @@
 import React, {useMemo, useState} from 'react';
+import {SelectWhithMemo} from '../components/Select/Select';
 
 export default {
   title: 'useMemo',
@@ -61,6 +62,53 @@ export const HelpsToReactMemo = () => {
     {counter}
     <button onClick={() => addUser()}>add user</button>
     <Users users={newArray}/>
+  </>
+}
+
+export const HelpsSelectExample = () => {
+  const [value1, setValue1] = useState('2')
+  const [value2, setValue2] = useState('2')
+  const [value3, setValue3] = useState('2')
+  const [cities, setCities] = useState(
+    [
+      {title: 'Minsk', value: '1', countryId: '1', countPeople: 400000},
+      {title: 'Moscow', value: '2', countryId: '2', countPeople: 11000000},
+      {title: 'Kiev', value: '3', countryId: '3', countPeople: 10000050},
+    ]
+  )
+  const [counter, setCounter] = useState(0)
+
+  const haveM = useMemo(()=>{
+    console.log('haveM')
+    return cities.filter(c=> c.title.toLowerCase().indexOf('m'))
+  }, [cities])
+  const oneCountry = useMemo(()=>{
+    console.log('oneCountry')
+    return cities.filter(c=> c.countryId === '1')
+  }, [cities])
+  const manyPeople = useMemo(()=>{
+    console.log('manyPeople')
+    return cities.filter(c=> c.countPeople > 1000000)
+  }, [cities])
+
+  return <>
+    <button onClick={() => setCounter(counter + 1)}>+</button>
+    {counter}
+    // have 'm'
+    <SelectWhithMemo
+      items={haveM}
+      value={value1}
+      onChange={setValue1}/>
+    // have one country
+    <SelectWhithMemo
+      items={oneCountry}
+      value={value2}
+      onChange={setValue2}/>
+    // have people more then 1 000 000
+    <SelectWhithMemo
+      items={manyPeople}
+      value={value3}
+      onChange={setValue3}/>
   </>
 }
 
