@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {SelectWhithMemo} from '../components/Select/Select';
 
 export default {
@@ -55,7 +55,7 @@ export const HelpsToReactMemo = () => {
     return users.filter(u => u.toLowerCase().indexOf('a') > -1)
   }, [users])
 
-  const addUser = ()=>setUsers([...users, 'Sveta' + new Date().getTime()])
+  const addUser = () => setUsers([...users, 'Sveta' + new Date().getTime()])
 
   return <>
     <button onClick={() => setCounter(counter + 1)}>+</button>
@@ -78,17 +78,17 @@ export const HelpsSelectExample = () => {
   )
   const [counter, setCounter] = useState(0)
 
-  const haveM = useMemo(()=>{
+  const haveM = useMemo(() => {
     console.log('haveM')
-    return cities.filter(c=> c.title.toLowerCase().indexOf('m'))
+    return cities.filter(c => c.title.toLowerCase().indexOf('m'))
   }, [cities])
-  const oneCountry = useMemo(()=>{
+  const oneCountry = useMemo(() => {
     console.log('oneCountry')
-    return cities.filter(c=> c.countryId === '1')
+    return cities.filter(c => c.countryId === '1')
   }, [cities])
-  const manyPeople = useMemo(()=>{
+  const manyPeople = useMemo(() => {
     console.log('manyPeople')
-    return cities.filter(c=> c.countPeople > 1000000)
+    return cities.filter(c => c.countPeople > 1000000)
   }, [cities])
 
   return <>
@@ -112,4 +112,42 @@ export const HelpsSelectExample = () => {
   </>
 }
 
+
+export const LikeUseCallback = () => {
+  console.log('LikeUseCallback')
+  const [counter, setCounter] = useState(0)
+  const [books, setBooks] = useState(['React', 'JS', 'CSS', 'HTML'])
+
+  const newArray = useMemo(() => {
+    return books.filter(u => u.toLowerCase().indexOf('a') > -1)
+  }, [books])
+
+  const memoizedAddBook = useMemo(()=> {
+    return () => {
+      console.log(books)
+      setBooks([...books, 'Angular' + new Date().getTime()])
+    }
+  }, [books])
+  const memoizedAddBook2 = useCallback(() => {
+      console.log(books)
+      setBooks([...books, 'Angular' + new Date().getTime()])
+    }, [books])
+
+  return <>
+    <button onClick={() => setCounter(counter + 1)}>+</button>
+    {counter}
+    <Books addBook={memoizedAddBook2}/>
+  </>
+}
+
+type BooksSecretPropsType = {
+  addBook: () => void
+}
+const BooksSecret = (props: BooksSecretPropsType) => {
+  console.log('BooksSecret')
+  return <div>
+    <button onClick={() => props.addBook()}>add user</button>
+  </div>
+}
+const Books = React.memo(BooksSecret)
 
