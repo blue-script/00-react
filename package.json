@@ -3,6 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@storybook/addon-actions": "^7.6.7",
+    "@storybook/addon-essentials": "^7.6.4",
+    "@storybook/addon-interactions": "^7.6.4",
+    "@storybook/addon-links": "^7.6.4",
+    "@storybook/addon-mdx-gfm": "7.6.4",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.4",
+    "@storybook/preset-create-react-app": "^7.6.4",
+    "@storybook/react": "^7.6.4",
+    "@storybook/react-webpack5": "^7.6.4",
+    "@storybook/test": "^7.6.4",
+    "eslint-plugin-storybook": "^0.6.15",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.6.4",
+    "webpack": "^5.89.0",
     "@storybook/addon-console": "^2.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -47,20 +62,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^7.6.4",
-    "@storybook/addon-essentials": "^7.6.4",
-    "@storybook/addon-interactions": "^7.6.4",
-    "@storybook/addon-links": "^7.6.4",
-    "@storybook/addon-mdx-gfm": "7.6.4",
-    "@storybook/addon-onboarding": "^1.0.10",
-    "@storybook/blocks": "^7.6.4",
-    "@storybook/preset-create-react-app": "^7.6.4",
-    "@storybook/react": "^7.6.4",
-    "@storybook/react-webpack5": "^7.6.4",
-    "@storybook/test": "^7.6.4",
-    "eslint-plugin-storybook": "^0.6.15",
-    "prop-types": "^15.8.1",
-    "storybook": "^7.6.4",
-    "webpack": "^5.89.0"
+
   }
 }
