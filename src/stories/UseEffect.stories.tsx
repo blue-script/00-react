@@ -30,25 +30,29 @@ export const SimpleExample = () => {
   </>
 }
 
-// export const SetIntervalExample = () => {
-//   const [fake, setFake] = useState(1)
-//   const [counter, setCounter] = useState<number>(1)
-//   console.log('SetTimoutExample')
-//
-//   useEffect(() => {
-//     console.log(counter) // будет всегда 1 из за замыкания
-//     const intervalId = setInterval(() => {
-//       setCounter((state) => state + 1)
-//     }, 1000)
-//     return () => {
-//       clearInterval(intervalId)
-//     }
-//   }, [])
-//
-//   return <>
-//     Hello, counter: {counter} - fake: {fake}
-//   </>
-// }
+
+
+export const SetIntervalExample = () => {
+  const [fake, setFake] = useState(1)
+  const [counter, setCounter] = useState<number>(1)
+  console.log('SetTimoutExample')
+
+  useEffect(() => {
+    console.log(counter) // будет всегда 1 из за замыкания
+    const id = setInterval(() => {
+      setCounter((state) => state + 1)
+    }, 1000)
+    return () => {
+      clearTimeout(id)
+    }
+  }, [])
+
+  return <>
+    Hello, counter: {counter} - fake: {fake}
+  </>
+}
+
+
 
 export const HomeworkClockExample = () => {
   const [date, setDate] = useState(new Date())
