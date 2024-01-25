@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {clearInterval} from "node:timers";
 
 export default {
   title: 'UseEffect demo'
@@ -33,9 +32,8 @@ export const SimpleExample = () => {
 
 
 export const SetIntervalExample = () => {
-  const [fake, setFake] = useState(1)
   const [counter, setCounter] = useState<number>(1)
-  console.log('SetTimoutExample')
+  console.log('SetIntervalExample')
 
   useEffect(() => {
     console.log(counter) // будет всегда 1 из за замыкания
@@ -43,12 +41,12 @@ export const SetIntervalExample = () => {
       setCounter((state) => state + 1)
     }, 1000)
     return () => {
-      clearTimeout(id)
+      clearInterval(id)
     }
   }, [])
 
   return <>
-    Hello, counter: {counter} - fake: {fake}
+    Hello, counter: {counter}
   </>
 }
 
